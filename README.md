@@ -8,7 +8,7 @@ docker简介
     2. 运行镜像时,可以通过参数改变虚拟机内部的状态，例如环境变量
     3. 使用类git的方式保存、分发、克隆镜像,使镜像可以像源代码一样push  pull clone 以及继承
 
-    这些有趣的特性使软件项目有了非常有趣的玩法:
+这些有趣的特性使软件项目有了非常有趣的玩法:
     1. 开发的时候，镜像直接就包含了操作系统，测试、测试环境、生产环境，环境都是一样的，可以避免没有装xx库之类的低级错误
     2. 使用环境变量区分不同的环境、设置容易改变的参数，需要修改的时候，仅仅需要修改下参数，重启就好了
     3. 可以大规模的批量部署，仅仅是一个命令的事情，也很容易集中管理
@@ -20,7 +20,7 @@ docker镜像简介
 docker的镜像和其他虚拟机镜像的区别是，它是分层、只读的。但是在镜像被启动运行之后，最上层会附加一层可写的文件系统，运行完毕后会保存为最新的
  一层。类似于git的不同版本一样，历史版本不可修改，但是你可以使用以前的版本创建一个分支 !(图片)[http://udn.yyuap.com/doc/chinese_docker/terms/images/docker-filesystems-multilayer.png]
 
-    docker使用Dockerfile来创建镜像，一个web静态网站镜像如下
+docker使用Dockerfile来创建镜像，一个web静态网站镜像如下
     ·
     FROM livehl/nginx
     copy ["www/", "/usr/share/nginx/html"]
@@ -42,8 +42,8 @@ docker镜像创建完毕之后，仅仅是放在了本地，如果需要给其�
         b. 自动构建,从github、bitbucket.org拉取git仓库，然后直接构建镜像
    https://hub.docker.com/r/livehl/cow/  这个镜像是由 https://github.com/livehl/cow   这个git库自动构建的，每当git库有更新时，镜像服务商会自动签出最新的
 代码，依据设置自动打包，发布版本
-    如果在国外使用，推荐用docker官方的[hub.docker.com](hub.docker.com)。国内可以使用阿里云容器和daocloud容器的，速度快。当然项目小还是使用hub.docker.com方便些。
-    使用镜像仅仅需要docker pull hub.docker.com/livehl/cow 即可下载到本地，对于hub.docker.com ,可以省略前面的域名，仅仅输入docker pull livehl/cow 即可
+如果在国外使用，推荐用docker官方的[hub.docker.com](hub.docker.com)。国内可以使用阿里云容器和daocloud容器的，速度快。当然项目小还是使用hub.docker.com方便些。
+使用镜像仅仅需要docker pull hub.docker.com/livehl/cow 即可下载到本地，对于hub.docker.com ,可以省略前面的域名，仅仅输入docker pull livehl/cow 即可
 
 docker运行简介
 -----------
