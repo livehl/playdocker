@@ -17,9 +17,9 @@ docker简介
 
 docker镜像简介
 -----------
-    docker的镜像和其他虚拟机镜像的区别是，它是分层、只读的。但是在镜像被启动运行之后，最上层会附加一层可写的文件系统，运行完毕后会保存为最新的一层。类似于git的
-不同版本一样，历史版本不可修改，但是你可以使用以前的版本创建一个分支 !()[http://udn.yyuap.com/doc/chinese_docker/terms/images/docker-filesystems-multilayer.png]
-
+    docker的镜像和其他虚拟机镜像的区别是，它是分层、只读的。但是在镜像被启动运行之后，最上层会附加一层可写的文件系统，运行完毕后会保存为最新的
+ 一层。类似于git的不同版本一样，历史版本不可修改，但是你可以使用以前的版本创建一个分支 !(图片)[http://udn.yyuap.com/doc/chinese_docker/terms/images/docker-filesystems-multilayer.png]
+ 
     docker使用Dockerfile来创建镜像，一个web静态网站镜像如下
     ·
     FROM livehl/nginx
