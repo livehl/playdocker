@@ -4,12 +4,13 @@ play用户docker入门
 docker简介
 -----------
 一句话介绍:可以使用各种命令和restful api控制的超快“虚拟机”。
-        
+
     1. 利用linux的内核技术，实现软虚拟机，仅能够运行基于linux的系统
     2. 运行镜像时,可以通过参数改变虚拟机内部的状态，例如环境变量
     3. 使用类git的方式保存、分发、克隆镜像,使镜像可以像源代码一样push  pull clone 以及继承
 
 这些有趣的特性使软件项目有了非常有趣的玩法:
+
     1. 开发的时候，镜像直接就包含了操作系统，测试、测试环境、生产环境，环境都是一样的，可以避免没有装xx库之类的低级错误
     2. 使用环境变量区分不同的环境、设置容易改变的参数，需要修改的时候，仅仅需要修改下参数，重启就好了
     3. 可以大规模的批量部署，仅仅是一个命令的事情，也很容易集中管理
@@ -22,6 +23,7 @@ docker的镜像和其他虚拟机镜像的区别是，它是分层、只读的�
  一层。类似于git的不同版本一样，历史版本不可修改，但是你可以使用以前的版本创建一个分支 !(图片)[http://udn.yyuap.com/doc/chinese_docker/terms/images/docker-filesystems-multilayer.png]
 
 docker使用Dockerfile来创建镜像，一个web静态网站镜像如下
+
     ·
     FROM livehl/nginx
     copy ["www/", "/usr/share/nginx/html"]
@@ -37,6 +39,7 @@ docker使用Dockerfile来创建镜像，一个web静态网站镜像如下
 docker镜像服务简介
 -----------
 docker镜像创建完毕之后，仅仅是放在了本地，如果需要给其他人或者机器的话，需要一个类似与github一样的镜像管理平台才行，用法也和github差不多。
+
     1. 创建一个镜像，这时候什么都没有
     2. 镜像发布
         a. 本地构建，push
@@ -59,6 +62,7 @@ docker最强大的地方是可以通过restful接口管理一个物理机上的�
 play2配置docker
 -----------
 这是专门为play2用户快速使用docker入门的，篇幅可能偏长。操作步骤顺序如下
+
     1. 注册镜像服务，以[阿里云](https://cr.console.aliyun.com/#/docker/image/create)为例,设置仓库密码。在打包环境的docker中执行docker login registry.aliyuncs.com  
     2. 创建新镜像，设置代码源 选择 本地仓库
     3. build.sbt 中添加引用
