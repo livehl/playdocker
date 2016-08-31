@@ -99,8 +99,11 @@ play2配置docker
 -----------
 这是专门为play2用户快速使用docker入门的，篇幅可能偏长。操作步骤顺序如下
 
-    0. 使用windows docker 1.12.0的用户注意,需要配置  project/plugins.sbt  增加 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.1.4") ,否则无法打包(需要克隆git@github.com:swagger-api/swagger-play.git源代码，然后到目录play-2.5\swagger-play2>下执行sbt publishLocal)
-    1. 注册镜像服务，以[阿里云](https://cr.console.aliyun.com/#/docker/image/create)为例,设置仓库密码。在打包环境的docker中执行docker login registry.aliyuncs.com  
+    0. 使用windows docker 1.12.0的用户注意,需要配置  project/plugins.sbt 
+        增加 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.1.4") ,
+        否则无法打包(需要克隆git@github.com:swagger-api/swagger-play.git源代码，
+        然后到目录play-2.5\swagger-play2>下执行sbt publishLocal)
+    1. 注册镜像服务，以阿里云为例,设置仓库密码。在打包环境的docker中执行docker login registry.aliyuncs.com  
     2. 创建新镜像，设置代码源 选择 本地仓库
     3. build.sbt 中添加引用
         `
