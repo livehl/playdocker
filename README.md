@@ -49,7 +49,7 @@ docker镜像简介
 -----------
 docker的镜像和其他虚拟机镜像的区别是，它是分层、只读的。
     但是在镜像被启动运行之后，最上层会附加一层可写的文件系统，运行完毕后会保存为最新的
- 一层。类似于git的不同版本一样，历史版本不可修改，但是你可以使用以前的版本创建一个分支 ![图片](http://udn.yyuap.com/doc/chinese_docker/terms/images/docker-filesystems-multilayer.png "图片")
+ 一层。类似于git的不同版本一样，历史版本不可修改，但是你可以使用以前的版本创建一个分支 ![图片](dfm.png)
 
 docker使用Dockerfile来创建镜像，一个web静态网站镜像如下
 
@@ -59,11 +59,11 @@ docker使用Dockerfile来创建镜像，一个web静态网站镜像如下
     EXPOSE 80
     CMD ["/bin/sh","-c", "nginx -g 'daemon off;'"]
     ·
-第一行表示继承自哪个镜像。官方已经打包好了各种操作系统以及常用工具包的镜像，范例表示引用了[docker官方镜像服务](https://hub.docker.com/r/livehl/nginx/)的镜像。
-第二行表示拷贝Dockerfile同目录下的www目录到目标镜像的/usr/share/nginx/html目录下。
-第三行告诉docker，需要开放80端口。
-第四行告诉docker，系统启动后默认执行的命令。
-构建完毕镜像后，就可以启动了。效果即是部署了一个静态的网站。
+    第一行表示继承自哪个镜像。官方已经打包好了各种操作系统以及常用工具包的镜像，范例表示引用了[docker官方镜像服务](https://hub.docker.com/r/livehl/nginx/)的镜像。
+    第二行表示拷贝Dockerfile同目录下的www目录到目标镜像的/usr/share/nginx/html目录下。
+    第三行告诉docker，需要开放80端口。
+    第四行告诉docker，系统启动后默认执行的命令。
+    构建完毕镜像后，就可以启动了。效果即是部署了一个静态的网站。
 
 docker镜像服务简介
 -----------
@@ -73,10 +73,11 @@ docker镜像创建完毕之后，仅仅是放在了本地，如果需要给其�
     2. 镜像发布
         a. 本地构建，push
         b. 自动构建,从github、bitbucket.org拉取git仓库，然后直接构建镜像
-   https://hub.docker.com/r/livehl/cow/  这个镜像是由 https://github.com/livehl/cow   这个git库自动构建的，每当git库有更新时，镜像服务商会自动签出最新的
-代码，依据设置自动打包，发布版本
-如果在国外使用，推荐用docker官方的[hub.docker.com](http://hub.docker.com)。国内可以使用阿里云容器和daocloud容器的，速度快。当然项目小还是使用hub.docker.com方便些。
-使用镜像仅仅需要docker pull hub.docker.com/livehl/cow 即可下载到本地，对于hub.docker.com ,可以省略前面的域名，仅仅输入docker pull livehl/cow 即可
+
+    https://hub.docker.com/r/livehl/cow/  这个镜像是由 https://github.com/livehl/cow   这个git库自动构建的，每当git库有更新时，镜像服务商会自动签出最新的
+        代码，依据设置自动打包，发布版本
+    如果在国外使用，推荐用docker官方的[hub.docker.com](http://hub.docker.com)。国内可以使用阿里云容器和daocloud容器的，速度快。当然项目小还是使用hub.docker.com方便些。
+    使用镜像仅仅需要docker pull hub.docker.com/livehl/cow 即可下载到本地，对于hub.docker.com ,可以省略前面的域名，仅仅输入docker pull livehl/cow 即可
 
 docker安装
 ------------
@@ -87,6 +88,7 @@ docker运行简介
 -----------
 docker运行时的虚拟机叫做容器，使用参数可以覆盖镜像内的环境变量、设置网络、内存cpu限制，还能链接其他容器，对于一般应用而言，基本上只需要设置开放端口号、环境变量、链接其他程序
 就够了，而且一般不需要手动运行，有集中的管理平台管理。docker运行的详细介绍看[这里](http://dockone.io/article/152)
+
 docker管理简介
 -----------
 docker最强大的地方是可以通过restful接口管理一个物理机上的所有容器，于是催生出了各种各样的docker管理平台，甚至还有了*容器即服务(Container as a Service)*的概念。
@@ -132,9 +134,9 @@ play2配置docker
 
 前端后端分离部署
 -----------
-很多团队前端和后端是restful接口交互的，开发也是分离的，因此可以完全使用独立的部署方式
-用户->负载均衡->前端集群->nginx->后端集群 or 前端页面
-让用户的请求先经过前端的nginx来决定走向，需要前后端约定好路径，不能有冲突，例如(/api/ 全部转发后端)
+    很多团队前端和后端是restful接口交互的，开发也是分离的，因此可以完全使用独立的部署方式
+        用户->负载均衡->前端集群->nginx->后端集群 or 前端页面
+        让用户的请求先经过前端的nginx来决定走向，需要前后端约定好路径，不能有冲突，例如(/api/ 全部转发后端)
 
 
     1. 前端添加 Dockerfile文件
