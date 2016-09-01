@@ -68,7 +68,8 @@ docker使用Dockerfile来创建镜像，一个web静态网站镜像如下
     EXPOSE 80
     CMD ["/bin/sh","-c", "nginx -g 'daemon off;'"]
     ·
-    第一行表示继承自哪个镜像。官方已经打包好了各种操作系统以及常用工具包的镜像，范例表示引用了[docker官方镜像服务](https://hub.docker.com/r/livehl/nginx/)的镜像。
+    第一行表示继承自哪个镜像。官方已经打包好了各种操作系统以及常用工具包的镜像，
+        范例表示引用了 docker官方镜像服务 (https://hub.docker.com/r/livehl/nginx/)的镜像。
     第二行表示拷贝Dockerfile同目录下的www目录到目标镜像的/usr/share/nginx/html目录下。
     第三行告诉docker，需要开放80端口。
     第四行告诉docker，系统启动后默认执行的命令。
@@ -85,7 +86,7 @@ docker镜像创建完毕之后，仅仅是放在了本地，如果需要给其�
 
     https://hub.docker.com/r/livehl/cow/  这个镜像是由 https://github.com/livehl/cow   这个git库自动构建的，每当git库有更新时，镜像服务商会自动签出最新的
         代码，依据设置自动打包，发布版本
-    如果在国外使用，推荐用docker官方的[hub.docker.com](http://hub.docker.com)。国内可以使用阿里云容器和daocloud容器的，速度快。当然项目小还是使用hub.docker.com方便些。
+    如果在国外使用，推荐用docker官方的 http://hub.docker.com 。国内可以使用阿里云容器和daocloud容器的，速度快。当然项目小还是使用hub.docker.com方便些。
     使用镜像仅仅需要docker pull hub.docker.com/livehl/cow 即可下载到本地，对于hub.docker.com ,可以省略前面的域名，仅仅输入docker pull livehl/cow 即可
 
 docker安装
